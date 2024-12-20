@@ -2,7 +2,7 @@ package me.nettee.basket.service;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import me.nettee.basket.controller.dto.BasketCommandDto;
+import me.nettee.basket.controller.dto.BasketCommandDto.BasketCreateRequest;
 import me.nettee.basket.domain.Basket;
 import me.nettee.basket.exception.BasketCommandErrorCode;
 import me.nettee.basket.mapper.BasketDtoMapper;
@@ -30,7 +30,7 @@ public class BasketCommandService implements
     }
 
     @Override
-    public Basket create(BasketCommandDto.BasketCreateRequest basketCreateRequest) {
+    public Basket create(BasketCreateRequest basketCreateRequest) {
         Instant now = Instant.now();
         Basket basket = basketDtoMapper.toEntity(basketCreateRequest, now, now);
         return create(basket);
