@@ -1,0 +1,27 @@
+spring:
+  application.name: basket
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: ${DEMO_POSTGRESQL_URL}
+    username: ${DEMO_POSTGRESQL_USERNAME}
+    password: ${DEMO_POSTGRESQL_PASSWORD}
+
+    hikari:
+      connection-timeout: 30_000
+      idle-timeout: 60_000
+      max-lifetime: 1_800_000
+      maximum-pool-size: 300
+      minimum-idle: 5
+      leak-detection-threshold: 2000
+
+  jpa:
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+
+  flyway:
+    baseline-on-migrate: true
